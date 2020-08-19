@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
-// import Data from '../Data';
+import axios from 'axios';
+
 
 function Course() {
 
+  const [courseList, setCourseList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    fetch(
-        `http://localhost:5000/api/courses`, 
-      {
-        method: "GET",
-      }
-    )
-    .then(res => res.json())
-    .then(response => console.log(response))
-    })
+    axios(`http://localhost:5000/api/courses`)
+      .then(response => setCourseList(response))
+      .catch(error => console.log('Error fetching and parsing data', error))
+      .finally(() => setIsLoading(false));
+  });
+        
   
+  console.log(courseList)
+
     
   return (
     <div>
