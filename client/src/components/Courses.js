@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-
-function Course() {
-
-  const [courseList, setCourseList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    axios(`http://localhost:5000/api/courses`)
-      .then(response => setCourseList(response))
-      .catch(error => console.log('Error fetching and parsing data', error))
-      .finally(() => setIsLoading(false));
-  });
-        
-  
-  console.log(courseList)
-
-    
-  return (
-    <div>
+export default () => (
+  <div>
       <meta charSet="utf-8" />
       <meta
         name="viewport"
@@ -97,7 +79,10 @@ function Course() {
         </div>
       </div>
     </div>
-  );
-}
+);
+
+
+  
+ 
     
-export default Course
+
