@@ -1,7 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-export default () => (
-    <div>
-        <p>SignOut</p>
-    </div>
-);
+export default () => {
+  return (
+    <Redirect to="/" />
+  );
+}
