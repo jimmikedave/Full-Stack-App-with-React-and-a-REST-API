@@ -1,26 +1,36 @@
 import config from './config';
 
 export default class Data {
-    api(path, method = 'GET', body = null) {
-        const url = config.apiBaseUrl + path;
+  // used to make the GET and POST requests to the REST API
+  api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
+      const url = config.apiBaseUrl + path;
 
-        const options = {
-            method,
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-            },
-        };
+      // configuration object that lets you control a number of different settings
+      // sends a request with the HTTP method along with request headers and a stringified body
+      const options = {
+          method,
+          headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+          },
+      };
 
-        if(body !== null) {
-            options.body = JSON.stringify(body);
-        }
+      if(body !== null) {
+          options.body = JSON.stringify(body);
+      }
 
-        return fetch(url, options);
-    }
+      // Check if auth is required 
+      if(requiresAuth) {
+        const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);
 
-     // makes a GET request to the /users endpoint, and returns a JSON object
-  async getUser() {
-    const response = await this.api(`/users`, 'GET', null);
+        options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+      }
+
+      return fetch(url, options);
+  }
+
+  // makes a GET request to the /users endpoint, and returns a JSON object
+  async getUser(emailAddress, password) {
+    const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -47,6 +57,4 @@ export default class Data {
       throw new Error();
     }
   }
-
-
 }
