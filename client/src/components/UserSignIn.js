@@ -18,7 +18,7 @@ export default class UserSignIn extends Component {
 
     return (
       <div className="bounds">
-        <div className="grid-33 centered signin">
+        <div className="grid-33 centered signin white-text">
           <h1>Sign In</h1>
           <Form 
             cancel={this.cancel}
@@ -63,10 +63,12 @@ export default class UserSignIn extends Component {
   }
 
   submit = () => {
-    // destructuring assignment to extract context prop from this.props
+    // Destructuring assignment to extract context prop from this.props.
     const { context } = this.props;
+    const { from } = this.props.location.state || {from: {pathname: '/'}};
     const { emailAddress, password } = this.state;
 
+    // Call signIn function to sign user in.
     context.actions.signIn(emailAddress, password)
       .then((user) => {
         if(user === null) {
@@ -74,7 +76,7 @@ export default class UserSignIn extends Component {
             return {errors: ['Sign-in was unsuccessful']};
           });
         } else {
-          this.props.history.push('/authenticated');
+          this.props.history.push(from);
           console.log(`SUCCESS! ${emailAddress} is now signed in!`)
         }
       })
