@@ -202,12 +202,12 @@ svg {
 /* line 5, ../sass/global.sass */
 body {
   font-family: "Work Sans", sans-serif;
-  background: #fff;
+  background: rgb(1, 14, 48);
 }
 
 /* line 13, ../sass/global.sass */
 .header {
-  background: #57496e;
+  background: #7036dd;
   padding: 20px 0;
   margin-bottom: 30px;
 }
@@ -255,8 +255,8 @@ body {
 
 /* line 44, ../sass/global.sass */
 .actions--bar {
-  border-bottom: 1px solid #d5f9fe;
-  background: #f8feff;
+  border-bottom: 1px solid #12c5c5b4;
+  background: #12c5c5b4;
   padding: 20px 0;
   margin-top: -30px;
 }
@@ -309,6 +309,7 @@ p {
   float: left;
   padding: 0 15px;
   box-sizing: border-box;
+  
 }
 /* line 78, ../sass/global.sass */
 .grid-25 {
@@ -317,6 +318,7 @@ p {
 /* line 81, ../sass/global.sass */
 .grid-33 {
   width: 33.3%;
+  
 }
 /* line 84, ../sass/global.sass */
 .grid-66 {
@@ -339,7 +341,7 @@ p {
 
 /* line 102, ../sass/global.sass */
 .course--module {
-  background: #7c689b;
+  background: #7036dd;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -347,6 +349,7 @@ p {
   display: block;
   position: relative;
   box-sizing: border-box;
+  box-shadow: 10px 10px #12c5c5b4;
 }
 /* line 2, ../sass/mixins.sass */
 .course--module:before, .course--module:after {
@@ -434,7 +437,7 @@ p {
 .course--header .course--title {
   font-size: 48px;
   margin-bottom: 15px;
-  color: #332a40;
+  color: #fdfbff;
 }
 /* line 171, ../sass/global.sass */
 .course--header p {
@@ -460,7 +463,7 @@ p {
 .course--description p {
   font-size: 16px;
   line-height: 1.8;
-  color: #444;
+  color: rgb(255, 255, 255);
 }
 /* line 195, ../sass/global.sass */
 .course--description ol,
@@ -542,7 +545,7 @@ p {
 .course--stats--list h4 {
   font-family: "Cousine";
   font-weight: 100;
-  color: #999;
+  color: rgb(255, 255, 255);
   font-size: 14px;
   padding: 0 0 10px;
   margin-bottom: 10px;
@@ -553,6 +556,11 @@ p {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.white-text {
+  color: white;
+}
+
 /* line 300, ../sass/global.sass */
 .course--stats--list h3 {
   font-family: "Work Sans", sans-serif;
@@ -678,7 +686,7 @@ input:focus {
 
 /* line 507, ../sass/global.sass */
 .button {
-  background: #7c689b;
+  background: #7036dd81;
   color: #fff;
   font-family: "Work Sans", sans-serif;
   font-size: 18px;
@@ -701,14 +709,14 @@ input:focus {
 }
 /* line 522, ../sass/global.sass */
 .button:not(.button-secondary):hover {
-  background: #63537d;
+  background: #7036dd;
 }
 
 /* line 525, ../sass/global.sass */
 .button-secondary {
-  color: #7c689b;
+  color: #7036dd81;
   background: none;
-  box-shadow: 0 0 0 2px #7c689b inset;
+  box-shadow: 0 0 0 2px #7036dd81 inset;
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;
   -ms-transition: box-shadow 0.2s, color 0.2s;
@@ -717,8 +725,8 @@ input:focus {
 }
 /* line 530, ../sass/global.sass */
 .button-secondary:hover {
-  color: #63537d;
-  box-shadow: 0 0 0 2px #63537d inset;
+  color: #7036dd;
+  box-shadow: 0 0 0 2px #7036dd inset;
 }
 
 /* adds additional padding to the bottom of an element */
