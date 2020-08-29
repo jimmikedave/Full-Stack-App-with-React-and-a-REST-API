@@ -1,40 +1,58 @@
-// In React, Context is primarily used when some data needs to be accessible by many components 
-// at different nesting levels.
-// Context lets you pass data through the component tree without having to pass props down manually at every level.
-
 import React, { Component } from 'react';
 import Data from './Data';
+import Cookies from 'js-cookie';
 
+// Context lets you pass data through the component tree without having to pass props down manually at every level.
 const Context = React.createContext(); 
 
-// The provider is what provides the data that needs to be consumed by other components of the application
+// The provider is what provides the data that needs to be consumed by other components of the application.
 // This class is a high-order component that returns a provider component which provides state. 
 export class Provider extends Component {
 
   state = {
-    authenticatedUser: null
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
+    coursesArray: [],
+    courseDetail: [],
+    authPassword: Cookies.getJSON('authPassword'),
+    history: this.props
   };
 
   constructor() {
     super();
-    this.data = new Data(); //initialize a new instance of the Data class 
+    this.data = new Data(); // Initialize a new instance of the Data class.
   }
 
-  // value represents an object containing the context to be shared throughout the component tree
+  
   render() {
-    const { authenticatedUser } = this.state;
+    const { 
+      authenticatedUser,      
+      coursesArray,
+      courseDetail,
+      authPassword,
+      history
+     } = this.state;
 
+    // Value represents an object containing the context to be shared throughout the component tree.
     const value = {
       authenticatedUser,
+      coursesArray,
+      courseDetail,
+      authPassword,
+      history,
       data: this.data,
-      actions: { // Add the 'actions property and object'
+      actions: { // Stores functions for access later on.
         signIn: this.signIn,
-        signOut: this.signOut
+        signOut: this.signOut,
+        courseList: this.courseList,
+        courseInfo: this.courseInfo,
+        courseDelete: this.courseDelete,
       }
     };
-    // The Provider is what provides the data that needs to be consumed by other components
-    // provides the application state via a required 'value' prop
-    // value represents an object containing the context to be shared throughout the component tree
+
+    
+    // The Provider is what provides the data that needs to be consumed by other components.
+    // Provides the application state via a required 'value' prop.
+    // Value represents an object containing the context to be shared throughout the component tree.
     return (
       <Context.Provider value={value}>
         {this.props.children}
@@ -42,23 +60,79 @@ export class Provider extends Component {
     );
   }
 
-  
+  // Sets the state for authenticatedUser.
   signIn = async (emailAddress, password) => {
-    // returned promise value will look like {emailAddress: "emailAddress", password: "password"}
+    // Returned promise value will look like {emailAddress: "emailAddress", password: "password"}.
     const user = await this.data.getUser(emailAddress, password);
+    const userPassword = password;
     if(user !== null) {
       this.setState(() => {
         return {
           authenticatedUser: user,
+          authPassword: userPassword 
         };
       });
+
+      // Set a cookie.
+      Cookies.set('authenticatedUser', JSON.stringify(user), {expires: 1});
+      Cookies.set('authPassword', userPassword, {expires: 1});
     }
     return user;
   }
 
+  // Removes the user from the authenticatedUser state.
   signOut = () => {
-    this.setState({authenticatedUser: null});
+    this.setState(() => {
+      return {
+        authenticatedUser: null,
+      };
+    });
+    Cookies.remove('authenticatedUser');
+    Cookies.remove('authPassword');
   }
+
+  // Collects an array of courses.
+  courseList = async () => {
+    const courses = await this.data.getCourses();
+    this.setState(() => {
+      return {
+        coursesArray: courses,
+      };
+    });
+    return courses;
+  }
+  
+  // Collects specific course information.
+  courseInfo = async (id) => {
+    const course = await this.data.getCourse(id);
+    this.setState(() => {
+      if(Object.keys(course).length === 0) {
+        window.location.replace('/not-found')
+      } else {
+        return {
+          courseDetail: {
+            userId: course.course.userId,
+            id: course.course.id,
+            title: course.course.title,
+            description: course.course.description,
+            estimatedTime: course.course.estimatedTime,
+            materialsNeeded: course.course.materialsNeeded,
+            firstName: course.course.user.firstName,
+            lastName: course.course.user.lastName,
+            emailAddress: course.course.user.emailAddress
+          }
+        };
+      }
+    });
+    return course;    
+  }
+
+  // Deletes a targetted course.
+  courseDelete = async (id, emailAddress, password) => {
+    const deletion = await this.data.deleteCourse(id, emailAddress, password);
+    return deletion;
+  }
+
 }
 
 export const Consumer = Context.Consumer;
