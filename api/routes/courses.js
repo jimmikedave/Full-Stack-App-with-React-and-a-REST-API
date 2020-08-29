@@ -81,6 +81,7 @@ router.get('/', asyncHandler(async(req, res) => {
     ],
       attributes: ["id", "title", "description", "estimatedTime", "materialsNeeded", "userId"]
   });
+    
     res.json(courses);
 }));
 
@@ -106,7 +107,7 @@ router.post('/', authenticateUser, asyncHandler(async(req, res) => {
   } else {
     const course = await Course.create(newCourse);
     const id = course.dataValues.id;
-  
+    
     res.status(201).location('/api/courses/' + id).end();
   }
 }));
@@ -152,6 +153,8 @@ router.put('/:id', authenticateUser, asyncHandler(async(req, res) => {
       await course.update({
         title: req.body.title,
         description: req.body.description,
+        estimatedTime: req.body.estimatedTime,
+        materialsNeeded: req.body.materialsNeeded
       });
     
       res.status(204).end();
@@ -171,7 +174,6 @@ router.delete('/:id', authenticateUser, asyncHandler(async(req, res) => {
 
   if(authUser.id === course.userId) {
     await course.destroy();
-
     res.status(204).end();
   } else {
     errors.push('You are not authorized to delete this course.')
