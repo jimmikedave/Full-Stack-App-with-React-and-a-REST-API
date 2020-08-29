@@ -22,7 +22,7 @@ export default class UserSignUp extends Component {
 
     return (
       <div className="bounds">
-        <div className="grid-33 centered signin">
+        <div className="grid-33 centered signin white-text">
           <h1>Sign Up</h1>
           <Form 
             cancel={this.cancel}
@@ -69,7 +69,7 @@ export default class UserSignUp extends Component {
     );
   }
 
-  // allows change in the input values
+  // Allows change in the input values.
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -84,7 +84,7 @@ export default class UserSignUp extends Component {
   submit = () => {
     const { context } = this.props;
     
-    // destructure and unpack properties from the state object
+    // Destructure and unpack properties from the state object.
     const {
       firstName,
       lastName,
@@ -92,7 +92,7 @@ export default class UserSignUp extends Component {
       password,
     } = this.state;
 
-    // New user payload that will be passed to the createUser() method
+    // New user payload that will be passed to the createUser() method.
     const user = {
       firstName,
       lastName,
@@ -100,19 +100,22 @@ export default class UserSignUp extends Component {
       password,
     };
 
-    // createUser() is an asynchronous operation that returns a promise
-    // take a look at createUser() in Data.js
+    // CreateUser() is an asynchronous operation that returns a promise.
     context.data.createUser(user)
     .then(errors => {
-      if(errors.length) { //handles sign up issues ex. empty array
+      if(errors.length) { // Handles sign up issues ex. empty array.
         this.setState({errors});
       } else {
         console.log(`${emailAddress} is successfully signed up and authenticated!`);
+        context.actions.signIn(emailAddress, password)
+          .then(() => {
+            this.props.history.push('/');
+          })
       }
     })
     .catch (err => {
-      console.log(err); // handle rejected promises
-      this.props.history.push('/error'); //push to history stack
+      console.log(err); // Handle rejected promises.
+      this.props.history.push('/error'); 
     })
   }
 
