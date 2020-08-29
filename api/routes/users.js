@@ -66,7 +66,7 @@ const authenticateUser = async (req, res, next) => {
 };
 
 /***************
-  COURSE ROUTES
+  USER ROUTES
 ****************/
 
 /* GET route that returns the authenticated user. */
