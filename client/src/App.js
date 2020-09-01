@@ -18,7 +18,7 @@ import UserSignOut from './components/UserSignOut';
 import UserSignUp from './components/UserSignUp';
 import NotFound from './components/NotFound';
 import Forbidden from './components/Forbidden';
-import Error from './components/Error';
+import UnhandledError from './components/UnhandledError';
 
 
 // Higher order components
@@ -52,7 +52,7 @@ export default () => (
         <PrivateRoute path="/courses/:id/update" component={UpdateCourseWithContext} />
         <Route path="/not-found" component={NotFound} />
         <Route path="/forbidden" component={Forbidden} />
-        <Route path="/error" component={Error} />
+        <Route path="/error" component={UnhandledError} />
         <Redirect to="/not-found" />
       </Switch>
     </div>
