@@ -15,6 +15,7 @@ How to initialize:
     - npm start
     
 - Open a second text editor window. 
+- Open the client folder.
     - npm install
     - npm start
  
