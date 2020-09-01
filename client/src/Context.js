@@ -13,8 +13,7 @@ export class Provider extends Component {
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
     coursesArray: [],
     courseDetail: [],
-    authPassword: Cookies.getJSON('authPassword'),
-    history: this.props
+    authPassword: Cookies.getJSON('authPassword')
   };
 
   constructor() {
@@ -28,8 +27,7 @@ export class Provider extends Component {
       authenticatedUser,      
       coursesArray,
       courseDetail,
-      authPassword,
-      history
+      authPassword
      } = this.state;
 
     // Value represents an object containing the context to be shared throughout the component tree.
@@ -38,7 +36,6 @@ export class Provider extends Component {
       coursesArray,
       courseDetail,
       authPassword,
-      history,
       data: this.data,
       actions: { // Stores functions for access later on.
         signIn: this.signIn,
