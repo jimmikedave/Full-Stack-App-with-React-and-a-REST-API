@@ -45,7 +45,6 @@ export default class UserSignUp extends Component {
                         onChange={this.change}
                     />
                     </div>
-                    <p>By Joe Smith</p>
                 </div>
                 <div className="course--description">
                     <div>
@@ -113,8 +112,6 @@ export default class UserSignUp extends Component {
     const { context } = this.props;
     const authUser = context.authenticatedUser.authUser.emailAddress;
     const authPassword = context.authPassword;
-
-    console.log(context)
 
     
     // Destructure and unpack properties from the state object.
