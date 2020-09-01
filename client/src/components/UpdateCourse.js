@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component } from 'react';
 import Form from './Form';
 
 export default class UserSignUp extends Component {
@@ -7,7 +7,6 @@ export default class UserSignUp extends Component {
     description: '',
     estimatedTime: '',
     materialsNeeded: '',
-    userId: '',
     errors: [],
   }
 
@@ -18,15 +17,11 @@ export default class UserSignUp extends Component {
   // Collect targetted course information.
   loadCourse = () => {
     this.props.context.actions.courseInfo(this.props.match.params.id)
-    
     .then(response => {
-      this.setState({
-        title: response.course.title,
-        description: response.course.description,
-        estimatedTime: response.course.estimatedTime,
-        materialsNeeded:response.course.materialsNeeded,
-        userId: response.course.userId
-      })
+      // If the current user does not have authentication for the course redirect to /forbidden.
+        if(response.course.userId !== this.props.context.authenticatedUser.authUser.id) {
+          this.props.history.push('/forbidden')
+        }
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error)
@@ -39,14 +34,10 @@ export default class UserSignUp extends Component {
       description,
       estimatedTime,
       materialsNeeded,
-      userId,
       errors,
     } = this.state;
 
-    // If the current user does not have authentication for the course redirect to /forbidden.
-    if(this.props.context.courseDetail.userId !== this.props.context.authenticatedUser.authUser.id) {
-      this.props.history.push('/forbidden')
-    }
+    
 
     return (
         <div className="bounds course--detail">
@@ -73,7 +64,6 @@ export default class UserSignUp extends Component {
                         defaultValue={title}
                     />
                     </div>
-                    <p>By Joe Smith</p>
                 </div>
                 <div className="course--description">
                     <div>
@@ -132,6 +122,8 @@ export default class UserSignUp extends Component {
     const name = event.target.name;
     const value = event.target.value;
 
+    console.log('name:' + name + 'value:' + value)
+
     this.setState(() => {
       return {
         [name]: value
@@ -144,7 +136,7 @@ export default class UserSignUp extends Component {
     const { context } = this.props;
     const authUser = context.authenticatedUser.authUser.emailAddress;
     const authPassword = context.authPassword;
-    const courseId = context.courseDetail.id;
+    const courseId = this.props.match.params.id;
 
     // console.log(this.props)
 
@@ -154,8 +146,7 @@ export default class UserSignUp extends Component {
       title,
       description,
       estimatedTime,
-      materialsNeeded,
-      userId
+      materialsNeeded
     } = this.state;
 
     // New user payload that will be passed to the createUser() method
@@ -163,11 +154,10 @@ export default class UserSignUp extends Component {
       title,
       description,
       estimatedTime,
-      materialsNeeded,
-      userId
+      materialsNeeded
     };
 
-    
+    // console.log(courseBody)
 
     // CreateUser() is an asynchronous operation that returns a promise.
     context.data.updateCourse(courseId, courseBody, authUser, authPassword)
