@@ -22,7 +22,6 @@ export default class CourseDetail extends Component {
   loadCourse = () => {
     this.props.context.actions.courseInfo(this.props.match.params.id)
     .then(response => {
-      console.log(response)
       this.setState({
         title: response.course.title,
         description: response.course.description,
