@@ -11,24 +11,37 @@ export default class UserSignUp extends Component {
   }
 
   componentDidMount() {
-    this.loadCourse();
+    this.loadCourse();    
   }
 
-  // Collect targetted course information.
+  // Collect targetted course information to check if the user has authorization.
   loadCourse = () => {
     this.props.context.actions.courseInfo(this.props.match.params.id)
     .then(response => {
       // If the current user does not have authentication for the course redirect to /forbidden.
         if(response.course.userId !== this.props.context.authenticatedUser.authUser.id) {
           this.props.history.push('/forbidden')
+        } else {
+          this.setState({
+            title: response.course.title,
+            description: response.course.description,
+            estimatedTime: response.course.estimatedTime,
+            materialsNeeded: response.course.materialsNeeded,
+            userId: response.course.userId,
+            author: response.course.user
+          })
         }
+
+      
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error)
     })
   };
 
+
   render() {
+    
     const {
       title,
       description,
@@ -61,7 +74,7 @@ export default class UserSignUp extends Component {
                         className="input-title course--title--input"
                         placeholder="Course title..."
                         onChange={this.change}
-                        defaultValue={title}
+                        value={title}
                     />
                     </div>
                 </div>
@@ -73,7 +86,7 @@ export default class UserSignUp extends Component {
                         className=""
                         placeholder="Course description..."
                         onChange={this.change}
-                        defaultValue={description}
+                        value={description}
                     />
                     </div>
                 </div>
@@ -91,7 +104,7 @@ export default class UserSignUp extends Component {
                             className="course--time--input"
                             placeholder="Hours"
                             onChange={this.change}
-                            defaultValue={estimatedTime}
+                            value={estimatedTime}
                         />
                         </div>
                     </li>
@@ -104,7 +117,7 @@ export default class UserSignUp extends Component {
                             className=""
                             placeholder="List materials..."
                             onChange={this.change}
-                            defaultValue={materialsNeeded}
+                            value={materialsNeeded}
                         />
                         </div>
                     </li>
@@ -121,8 +134,6 @@ export default class UserSignUp extends Component {
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-
-    console.log('name:' + name + 'value:' + value)
 
     this.setState(() => {
       return {
