@@ -81,7 +81,6 @@ router.get('/', asyncHandler(async(req, res) => {
     ],
       attributes: ["id", "title", "description", "estimatedTime", "materialsNeeded", "userId"]
   });
-    
     res.json(courses);
 }));
 
