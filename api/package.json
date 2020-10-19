@@ -8,7 +8,7 @@
     "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'"
   },
   "engines": {
-    "node": "4.2.4"
+    "node": "12.18.0"
   },
   "keywords": [],
   "author": "",
