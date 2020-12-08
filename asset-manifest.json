@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Full-Stack-App-with-React-and-a-REST-API/static/css/main.d94c842b.chunk.css",
+    "main.js": "/Full-Stack-App-with-React-and-a-REST-API/static/js/main.afe098d3.chunk.js",
+    "main.js.map": "/Full-Stack-App-with-React-and-a-REST-API/static/js/main.afe098d3.chunk.js.map",
+    "runtime-main.js": "/Full-Stack-App-with-React-and-a-REST-API/static/js/runtime-main.24593c90.js",
+    "runtime-main.js.map": "/Full-Stack-App-with-React-and-a-REST-API/static/js/runtime-main.24593c90.js.map",
+    "static/js/2.56089079.chunk.js": "/Full-Stack-App-with-React-and-a-REST-API/static/js/2.56089079.chunk.js",
+    "static/js/2.56089079.chunk.js.map": "/Full-Stack-App-with-React-and-a-REST-API/static/js/2.56089079.chunk.js.map",
+    "index.html": "/Full-Stack-App-with-React-and-a-REST-API/index.html",
+    "precache-manifest.3254f93f7d4a7176cba122b560b8de36.js": "/Full-Stack-App-with-React-and-a-REST-API/precache-manifest.3254f93f7d4a7176cba122b560b8de36.js",
+    "service-worker.js": "/Full-Stack-App-with-React-and-a-REST-API/service-worker.js",
+    "static/css/main.d94c842b.chunk.css.map": "/Full-Stack-App-with-React-and-a-REST-API/static/css/main.d94c842b.chunk.css.map",
+    "static/js/2.56089079.chunk.js.LICENSE.txt": "/Full-Stack-App-with-React-and-a-REST-API/static/js/2.56089079.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.24593c90.js",
+    "static/js/2.56089079.chunk.js",
+    "static/css/main.d94c842b.chunk.css",
+    "static/js/main.afe098d3.chunk.js"
+  ]
+}
