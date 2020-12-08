@@ -42,7 +42,7 @@ export default () => (
       <HeaderWithContext />
 
       <Switch>
-        <Route exact path="/" component={CoursesWithContext} />
+        <Route exact path="/Full-Stack-App-with-React-and-a-REST-API" component={CoursesWithContext} />
         <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
         <Route path="/signin" component={UserSignInWithContext} />
         <Route path="/signup" component={UserSignUpWithContext} />
