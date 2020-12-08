@@ -7,7 +7,7 @@ export default () => {
       <div className="bounds">
         <div className="grid-100">
             <h1>Course has been deleted!</h1>
-            <Link className="button button-secondary" to="/">Return to List</Link>
+            <Link className="button button-secondary" to="/Full-Stack-App-with-React-and-a-REST-API">Return to List</Link>
         </div>
       </div>
     </div>

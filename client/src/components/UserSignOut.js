@@ -6,6 +6,6 @@ export default ({ context }) => {
   useEffect(() => context.actions.signOut());
 
   return (
-    <Redirect to="/" />
+    <Redirect to="/Full-Stack-App-with-React-and-a-REST-API" />
   );
 }

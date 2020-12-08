@@ -109,7 +109,7 @@ export default class UserSignUp extends Component {
         console.log(`${emailAddress} is successfully signed up and authenticated!`);
         context.actions.signIn(emailAddress, password)
           .then(() => {
-            this.props.history.push('/');
+            this.props.history.push('/Full-Stack-App-with-React-and-a-REST-API');
           })
       }
     })
@@ -120,6 +120,6 @@ export default class UserSignUp extends Component {
   }
 
   cancel = () => {
-      this.props.history.push('/');
+      this.props.history.push('/Full-Stack-App-with-React-and-a-REST-API');
   }
 }

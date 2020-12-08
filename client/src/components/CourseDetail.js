@@ -87,7 +87,7 @@ export default class CourseDetail extends Component {
                         <span>
                           {courseSettings}
                         </span>
-                        <Link className="button button-secondary" to="/">Return to List</Link>
+                        <Link className="button button-secondary" to="/Full-Stack-App-with-React-and-a-REST-API">Return to List</Link>
                     </form>
                     </div>
                   </div>

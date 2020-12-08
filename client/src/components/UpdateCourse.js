@@ -176,7 +176,7 @@ export default class UserSignUp extends Component {
       if(errors.length) { //handles sign up issues ex. empty array
         this.setState({errors});
       } else {
-        this.props.history.push('/');
+        this.props.history.push('/Full-Stack-App-with-React-and-a-REST-API');
       }
     })
     .catch (err => {
@@ -186,6 +186,6 @@ export default class UserSignUp extends Component {
   }
 
   cancel = () => {
-      this.props.history.push('/');
+      this.props.history.push('/Full-Stack-App-with-React-and-a-REST-API');
   }
 }

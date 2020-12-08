@@ -65,7 +65,7 @@ export default class UserSignIn extends Component {
   submit = () => {
     // Destructuring assignment to extract context prop from this.props.
     const { context } = this.props;
-    const { from } = this.props.location.state || {from: {pathname: '/'}};
+    const { from } = this.props.location.state || {from: {pathname: '/Full-Stack-App-with-React-and-a-REST-API'}};
     const { emailAddress, password } = this.state;
 
     // Call signIn function to sign user in.
@@ -87,6 +87,6 @@ export default class UserSignIn extends Component {
   }
 
   cancel = () => {
-    this.props.history.push('/');
+    this.props.history.push('/Full-Stack-App-with-React-and-a-REST-API');
   }
 }
