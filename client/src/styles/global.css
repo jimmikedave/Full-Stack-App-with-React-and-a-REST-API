@@ -199,15 +199,20 @@ svg {
   overflow: hidden;
 }
 
-/* line 5, ../sass/global.sass */
+/*******************
+Body
+********************/
 body {
   font-family: "Work Sans", sans-serif;
-  background: rgb(1, 14, 48);
+  background: url('../images/pexels-book.jpg') top;
+  background-size: 110%;
 }
 
-/* line 13, ../sass/global.sass */
+/*******************
+Header
+********************/
 .header {
-  background: #7036dd;
+  background: #241000;
   padding: 20px 0;
   margin-bottom: 30px;
 }
@@ -255,8 +260,8 @@ body {
 
 /* line 44, ../sass/global.sass */
 .actions--bar {
-  border-bottom: 1px solid #12c5c5b4;
-  background: #12c5c5b4;
+  border-bottom: 1px solid #c57d12b4;
+  background: #c57d12b4;
   padding: 20px 0;
   margin-top: -30px;
 }
@@ -282,7 +287,7 @@ h1 {
 
 /* line 61, ../sass/global.sass */
 a {
-  color: #7c689b;
+  color: #000000;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -309,7 +314,6 @@ p {
   float: left;
   padding: 0 15px;
   box-sizing: border-box;
-  
 }
 /* line 78, ../sass/global.sass */
 .grid-25 {
@@ -341,7 +345,7 @@ p {
 
 /* line 102, ../sass/global.sass */
 .course--module {
-  background: #7036dd;
+  background: #585858cc;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -349,7 +353,7 @@ p {
   display: block;
   position: relative;
   box-sizing: border-box;
-  box-shadow: 10px 10px #12c5c5b4;
+  box-shadow: 5px 5px #c5861270;
 }
 /* line 2, ../sass/mixins.sass */
 .course--module:before, .course--module:after {
@@ -664,7 +668,7 @@ input:-ms-input-placeholder {
 }
 /* line 500, ../sass/global.sass */
 input:focus {
-  border-color: #7c689b;
+  border-color: #241000;
 }
 
 /* line 29, ../sass/mixins.sass */
@@ -686,7 +690,7 @@ input:focus {
 
 /* line 507, ../sass/global.sass */
 .button {
-  background: #7036dd81;
+  background:#241000c0;
   color: #fff;
   font-family: "Work Sans", sans-serif;
   font-size: 18px;
@@ -702,6 +706,7 @@ input:focus {
   -ms-transition: background 0.2s;
   -o-transition: background 0.2s;
   transition: background 0.2s;
+  cursor: pointer;
 }
 /* line 520, ../sass/global.sass */
 .button:focus {
@@ -709,24 +714,25 @@ input:focus {
 }
 /* line 522, ../sass/global.sass */
 .button:not(.button-secondary):hover {
-  background: #7036dd;
+  background: #241000;
 }
 
 /* line 525, ../sass/global.sass */
 .button-secondary {
-  color: #7036dd81;
+  color: #ffffff8e;
   background: none;
-  box-shadow: 0 0 0 2px #7036dd81 inset;
+  box-shadow: 0 0 0 2px #2410008e inset;
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;
   -ms-transition: box-shadow 0.2s, color 0.2s;
   -o-transition: box-shadow 0.2s, color 0.2s;
   transition: box-shadow 0.2s, color 0.2s;
+  cursor: pointer;
 }
 /* line 530, ../sass/global.sass */
 .button-secondary:hover {
-  color: #7036dd;
-  box-shadow: 0 0 0 2px #7036dd inset;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px #241000 inset;
 }
 
 /* adds additional padding to the bottom of an element */
@@ -747,11 +753,11 @@ input:focus {
 
 /* styles the validation errors */
 .validation--errors--label {
-  color: #7c689b;
+  color: #f35454;
   font-size: 28px;
 }
 .validation-errors ul {
-  color: #7c689b;
+  color: #f35454;
   padding: 15px 0 40px 10px;
 }
 
